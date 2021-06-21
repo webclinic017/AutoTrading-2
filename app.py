@@ -156,8 +156,9 @@ def validateuser():
     symbol = request.args.get('symbol') or request.get_json().get('symbol', '')
     global percent
     global amount
-    percent = request.args.get('stoploss') or request.get_json().get('stoploss', '')
-    amount = request.args.get('size') or request.get_json().get('size', '')
+    percent = request.args.get('percent') or request.get_json().get('percent', '')
+    amount = request.args.get('amount') or request.get_json().get('amount', '')
+    print(percent, amount)
 
 
     global side1, side2, order_type, rate, yes, price, paramss, params, leverage
