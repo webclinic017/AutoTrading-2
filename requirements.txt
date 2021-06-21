@@ -1,0 +1,12 @@
+flask
+SQLAlchemy==1.3.24
+numpy==1.18.5
+pandas
+pysqlite3
+flask-cors
+stripe
+python-dotenv
+stripe
+flask_session
+idna_ssl
+ccxt==1.51.73
