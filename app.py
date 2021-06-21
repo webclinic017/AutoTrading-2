@@ -38,6 +38,7 @@ CORS(app)
 DBNAME = "siraj.db"
 
 
+
 def tr(data):
     data['previous_close'] = data['close'].shift(1)
     data['high-low'] = abs(data['high'] - data['low'])
@@ -153,6 +154,27 @@ def validateuser():
     BINANCE_API_KEY = request.args.get('BINANCE_API_KEY') or request.get_json().get('BINANCE_API_KEY', '')
     BINANCE_SECRET_KEY = request.args.get('BINANCE_SECRET_KEY') or request.get_json().get('BINANCE_SECRET_KEY', '')
     symbol = request.args.get('symbol') or request.get_json().get('symbol', '')
+    global percent
+    global amount
+    percent = request.args.get('stoploss') or request.get_json().get('stoploss', '')
+    amount = request.args.get('size') or request.get_json().get('size', '')
+
+
+    global side1, side2, order_type, rate, yes, price, paramss, params, leverage
+    side1 = 'buy'
+    side2 = 'sell'
+    order_type = 'TRAILING_STOP_MARKET'
+    rate = 'true'
+    yes = 'true'
+    price = None
+    paramss = {
+        'callbackRate': percent,
+        'ReduceOnly': rate,
+    }
+    params = {
+        'ReduceOnly': rate
+    }
+    leverage =  10
 
     account = {'email': email}
     payload = account
